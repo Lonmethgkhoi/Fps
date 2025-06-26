@@ -1,5 +1,3 @@
-# Tạo file mới từ nội dung script đã cập nhật và ổn định
-script_content = """
 -- ✅ LScript FPS Boost - All Features Included (Auto Inject)
 -- ✅ Script by LScriptZ / Lonmethgkhoi
 
@@ -32,7 +30,7 @@ fpsLabel.Parent = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 local lastTime, frames = tick(), 0
 RunService.RenderStepped:Connect(function()
-   frames += 1
+   frames = frames + 1
    if tick() - lastTime >= 1 then
       fpsLabel.Text = "FPS: " .. frames
       frames = 0
@@ -47,10 +45,10 @@ RunService.Stepped:Connect(function()
    local hum = char and char:FindFirstChildOfClass("Humanoid")
    local hrp = char and char:FindFirstChild("HumanoidRootPart")
    if hrp then
-      hrp.Velocity = Vector3.zero
-      hrp.RotVelocity = Vector3.zero
-      hrp.AssemblyLinearVelocity = Vector3.zero
-      hrp.AssemblyAngularVelocity = Vector3.zero
+      hrp.Velocity = Vector3.new(0, 0, 0)
+      hrp.RotVelocity = Vector3.new(0, 0, 0)
+      hrp.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+      hrp.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
       if lastPos and (hrp.Position - lastPos).Magnitude > 100 then
          hrp.CFrame = CFrame.new(lastPos)
       end
@@ -156,11 +154,3 @@ CreditsTab:CreateParagraph({
    Title = "Script by LScriptZ",
    Content = "Made for Lonmethgkhoi / GitHub: LonmeTeam"
 })
-"""
-
-# Lưu ra file
-file_path = "/mnt/data/LScriptFPSBoost.lua"
-with open(file_path, "w", encoding="utf-8") as f:
-    f.write(script_content)
-
-file_path
