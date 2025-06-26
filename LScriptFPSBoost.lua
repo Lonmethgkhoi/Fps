@@ -1,8 +1,10 @@
--- ✅ LScript FPS Boost by LScriptZ / Lonmethgkhoi
+-- ✅ LScript FPS Boost - All Features Included (Auto Inject)
+-- ✅ Script by LScriptZ / Lonmethgkhoi
 
--- 🧱 Load Rayfield UI
+-- ⚙️ LOAD RAYFIELD UI
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source.lua'))()
 
+-- 🧩 CREATE UI WINDOW
 local Window = Rayfield:CreateWindow({
    Name = "LScript FPS Booster",
    LoadingTitle = "FPS Boost UI",
@@ -12,7 +14,7 @@ local Window = Rayfield:CreateWindow({
    KeySystem = false
 })
 
--- 🎯 FPS Counter
+-- 📊 FPS COUNTER
 local fpsLabel = Instance.new("TextLabel")
 fpsLabel.Name = "FPSCounter"
 fpsLabel.Size = UDim2.new(0, 100, 0, 25)
@@ -36,7 +38,7 @@ RunService.RenderStepped:Connect(function()
    end
 end)
 
--- 🛡️ Anti-Fling, Anti-Speed, Anti-Teleport, Anti-JumpPower (Auto Bật)
+-- 🛡️ ANTI-HACK CORE (Merged)
 local lastPos = nil
 RunService.Stepped:Connect(function()
    local char = game.Players.LocalPlayer.Character
@@ -58,7 +60,7 @@ RunService.Stepped:Connect(function()
    end
 end)
 
--- ⚙️ Boost Function
+-- ⚙️ BOOST FUNCTION
 function ApplyBoost()
    local Lighting = game:GetService("Lighting")
    Lighting.GlobalShadows = false
@@ -86,7 +88,7 @@ function ApplyBoost()
    end
 end
 
--- 🧰 Main Tab
+-- 🔘 MAIN TAB
 local MainTab = Window:CreateTab("Main", 4483362458)
 
 MainTab:CreateToggle({
@@ -112,7 +114,7 @@ MainTab:CreateToggle({
    end
 })
 
--- 🎵 UI Tab
+-- 🎵 UI TAB
 local UITab = Window:CreateTab("UI", 4483362663)
 
 UITab:CreateToggle({
@@ -142,14 +144,11 @@ UITab:CreateToggle({
    end
 })
 
--- 🔐 Anti-Hack Tab
+-- 🛡️ ANTI-HACK TAB
 local AntiTab = Window:CreateTab("Anti-Hack", 4483362263)
-AntiTab:CreateParagraph({
-   Title = "Auto Protection Enabled",
-   Content = "• Anti-Fling\n• Anti-Speed\n• Anti-Teleport\n• Anti-JumpPower"
-})
+AntiTab:CreateParagraph({Title="Auto Enabled",Content="Anti-Fling, Anti-Speed, Anti-Teleport, Anti-JumpPower"})
 
--- 📌 Credits
+-- 📌 CREDITS
 local CreditsTab = Window:CreateTab("Credits", 4483362245)
 CreditsTab:CreateParagraph({
    Title = "Script by LScriptZ",
