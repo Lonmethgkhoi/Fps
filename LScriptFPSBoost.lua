@@ -1,10 +1,8 @@
--- ✅ LScript FPS Boost - All Features Included (Auto Inject)
--- ✅ Script by LScriptZ / Lonmethgkhoi
+-- ✅ LScript FPS Boost by LScriptZ / Lonmethgkhoi
 
--- ⚙️ LOAD RAYFIELD UI
+-- 🧱 Load Rayfield UI
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source.lua'))()
 
--- 🧩 CREATE UI WINDOW
 local Window = Rayfield:CreateWindow({
    Name = "LScript FPS Booster",
    LoadingTitle = "FPS Boost UI",
@@ -14,7 +12,7 @@ local Window = Rayfield:CreateWindow({
    KeySystem = false
 })
 
--- 📊 FPS COUNTER
+-- 🎯 FPS Counter
 local fpsLabel = Instance.new("TextLabel")
 fpsLabel.Name = "FPSCounter"
 fpsLabel.Size = UDim2.new(0, 100, 0, 25)
@@ -30,7 +28,7 @@ fpsLabel.Parent = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 local lastTime, frames = tick(), 0
 RunService.RenderStepped:Connect(function()
-   frames = frames + 1
+   frames += 1
    if tick() - lastTime >= 1 then
       fpsLabel.Text = "FPS: " .. frames
       frames = 0
@@ -38,17 +36,17 @@ RunService.RenderStepped:Connect(function()
    end
 end)
 
--- 🛡️ ANTI-HACK CORE (Merged)
+-- 🛡️ Anti-Fling, Anti-Speed, Anti-Teleport, Anti-JumpPower (Auto Bật)
 local lastPos = nil
 RunService.Stepped:Connect(function()
    local char = game.Players.LocalPlayer.Character
    local hum = char and char:FindFirstChildOfClass("Humanoid")
    local hrp = char and char:FindFirstChild("HumanoidRootPart")
    if hrp then
-      hrp.Velocity = Vector3.new(0, 0, 0)
-      hrp.RotVelocity = Vector3.new(0, 0, 0)
-      hrp.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-      hrp.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+      hrp.Velocity = Vector3.zero
+      hrp.RotVelocity = Vector3.zero
+      hrp.AssemblyLinearVelocity = Vector3.zero
+      hrp.AssemblyAngularVelocity = Vector3.zero
       if lastPos and (hrp.Position - lastPos).Magnitude > 100 then
          hrp.CFrame = CFrame.new(lastPos)
       end
@@ -60,7 +58,7 @@ RunService.Stepped:Connect(function()
    end
 end)
 
--- ⚙️ BOOST FUNCTION
+-- ⚙️ Boost Function
 function ApplyBoost()
    local Lighting = game:GetService("Lighting")
    Lighting.GlobalShadows = false
@@ -88,7 +86,7 @@ function ApplyBoost()
    end
 end
 
--- 🔘 MAIN TAB
+-- 🧰 Main Tab
 local MainTab = Window:CreateTab("Main", 4483362458)
 
 MainTab:CreateToggle({
@@ -114,7 +112,7 @@ MainTab:CreateToggle({
    end
 })
 
--- 🎵 UI TAB
+-- 🎵 UI Tab
 local UITab = Window:CreateTab("UI", 4483362663)
 
 UITab:CreateToggle({
@@ -144,11 +142,14 @@ UITab:CreateToggle({
    end
 })
 
--- 🛡️ ANTI-HACK TAB
+-- 🔐 Anti-Hack Tab
 local AntiTab = Window:CreateTab("Anti-Hack", 4483362263)
-AntiTab:CreateParagraph({Title="Auto Enabled",Content="Anti-Fling, Anti-Speed, Anti-Teleport, Anti-JumpPower"})
+AntiTab:CreateParagraph({
+   Title = "Auto Protection Enabled",
+   Content = "• Anti-Fling\n• Anti-Speed\n• Anti-Teleport\n• Anti-JumpPower"
+})
 
--- 📌 CREDITS
+-- 📌 Credits
 local CreditsTab = Window:CreateTab("Credits", 4483362245)
 CreditsTab:CreateParagraph({
    Title = "Script by LScriptZ",
