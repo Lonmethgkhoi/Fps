@@ -1,4 +1,4 @@
--- ✅ LScript FPS Boost - Full Rayfield UI + Anti-Fling + Anti-Hack + Dark Theme -- ✅ Script by LScriptZ / Lonmethgkhoi
+-- ✅ LScript FPS Boost - All Features Included (Auto Inject) -- ✅ Script by LScriptZ / Lonmethgkhoi
 
 -- ⚙️ LOAD RAYFIELD UI local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source.lua'))()
 
@@ -8,7 +8,7 @@
 
 local RunService = game:GetService("RunService") local lastTime, frames = tick(), 0 RunService.RenderStepped:Connect(function() frames += 1 if tick() - lastTime >= 1 then fpsLabel.Text = "FPS: " .. frames frames = 0 lastTime = tick() end end)
 
--- 🛡️ CORE ANTI-FLING + STABILIZE RunService.Stepped:Connect(function() pcall(function() local char = game.Players.LocalPlayer.Character if char and char:FindFirstChild("HumanoidRootPart") then local hrp = char.HumanoidRootPart hrp.Velocity = Vector3.zero hrp.RotVelocity = Vector3.zero hrp.AssemblyLinearVelocity = Vector3.zero hrp.AssemblyAngularVelocity = Vector3.zero end end) end)
+-- 🛡️ ANTI-HACK CORE (Merged) local lastPos = nil RunService.Stepped:Connect(function() local char = game.Players.LocalPlayer.Character local hum = char and char:FindFirstChildOfClass("Humanoid") local hrp = char and char:FindFirstChild("HumanoidRootPart") if hrp then hrp.Velocity = Vector3.zero hrp.RotVelocity = Vector3.zero hrp.AssemblyLinearVelocity = Vector3.zero hrp.AssemblyAngularVelocity = Vector3.zero if lastPos and (hrp.Position - lastPos).Magnitude > 100 then hrp.CFrame = CFrame.new(lastPos) end lastPos = hrp.Position end if hum then if hum.WalkSpeed > 25 then hum.WalkSpeed = 16 end if hum.JumpPower > 75 then hum.JumpPower = 50 end end end)
 
 -- ⚙️ BOOST FUNCTION function ApplyBoost() local Lighting = game:GetService("Lighting") Lighting.GlobalShadows = false Lighting.FogEnd = 1e10 Lighting.Brightness = 1 Lighting.ClockTime = 14
 
@@ -30,23 +30,7 @@ UITab:CreateToggle({ Name = "Play Background Lofi", CurrentValue = false, Callba
 
 UITab:CreateToggle({ Name = "Show FPS Counter", CurrentValue = true, Callback = function(show) fpsLabel.Visible = show end })
 
--- 🛡️ ANTI-HACK TAB local AntiTab = Window:CreateTab("Anti-Hack", 4483362263)
-
-local AntiFlags = { AntiSpeed = true, AntiJump = true, AntiTeleport = true }
-
-RunService.Stepped:Connect(function() local char = game.Players.LocalPlayer.Character local hum = char and char:FindFirstChildOfClass("Humanoid") local hrp = char and char:FindFirstChild("HumanoidRootPart")
-
-if AntiFlags.AntiSpeed and hum and hum.WalkSpeed > 25 then hum.WalkSpeed = 16 end
-
-if AntiFlags.AntiJump and hum and hum.JumpPower > 75 then hum.JumpPower = 50 end
-
-if AntiFlags.AntiTeleport and hrp then if AntiFlags._lastPos and (hrp.Position - AntiFlags._lastPos).Magnitude > 100 then hrp.CFrame = CFrame.new(AntiFlags._lastPos) end AntiFlags._lastPos = hrp.Position end end)
-
-AntiTab:CreateToggle({ Name = "Anti Speed Hack", CurrentValue = true, Callback = function(v) AntiFlags.AntiSpeed = v end })
-
-AntiTab:CreateToggle({ Name = "Anti JumpPower Hack", CurrentValue = true, Callback = function(v) AntiFlags.AntiJump = v end })
-
-AntiTab:CreateToggle({ Name = "Anti Teleport", CurrentValue = true, Callback = function(v) AntiFlags.AntiTeleport = v end })
+-- 🛡️ ANTI-HACK TAB local AntiTab = Window:CreateTab("Anti-Hack", 4483362263) AntiTab:CreateParagraph({Title="Auto Enabled",Content="Anti-Fling, Anti-Speed, Anti-Teleport, Anti-JumpPower"})
 
 -- 📌 CREDITS local CreditsTab = Window:CreateTab("Credits", 4483362245) CreditsTab:CreateParagraph({ Title = "Script by LScriptZ", Content = "Made for Lonmethgkhoi / GitHub: LonmeTeam" })
 
