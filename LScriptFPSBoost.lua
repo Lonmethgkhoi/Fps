@@ -105,7 +105,7 @@ end)
 -- ✅ Thông báo popup
 pcall(function()
     game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "LScript FPS Boost",
+        Title = "NovaX",
         Text = "✅ FPS Boost đã kích hoạt!",
         Duration = 5
     })
